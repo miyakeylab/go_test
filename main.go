@@ -9,5 +9,6 @@ import (
 func main() {
 	kadai.Kadai_1_1()
 	kadai.Kadai_1_2()
+	kadai.Kadai_1_3()
 }
 
