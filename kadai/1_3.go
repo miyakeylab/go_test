@@ -43,9 +43,9 @@ func (m MyMap) String() string {
 
 //スライス型
 type  Alphabet []string
-func (a Alphabet) String2() string {
+func (a Alphabet) String() string {
 	// len,cap,内容を表示
-	return fmt.Sprintf("len：%d cap:%d %s",len(a),cap(a),a)
+	return fmt.Sprintf("len：%d cap:%d ",len(a),cap(a))
 }
 
 
@@ -73,7 +73,7 @@ func Kadai_1_3() {
 
 	//スライス型
 	var alpha Alphabet = Alphabet{"a","b","c",}
-	fmt.Println(alpha.String2())
+	fmt.Println(alpha.String())
 	alpha = append(alpha, "d", "e")
-	fmt.Println(alpha.String2())
+	fmt.Println(alpha.String())
 }
