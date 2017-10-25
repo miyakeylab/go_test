@@ -16,5 +16,7 @@ func main() {
 	kadai.Kadai_1_3()
 	fmt.Println("***********1-4**************")
 	kadai.Kadai_1_4()
+	fmt.Println("***********1-5**************")
+	kadai.Kadai_1_5()
 }
 

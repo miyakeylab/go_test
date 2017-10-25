@@ -12,7 +12,7 @@ type Stringer interface {
 type MyHex int
 //16進数文字列表記
 func (h MyHex) String() string {
-	return fmt.Sprintf("%dの16進数：%h",int(h), int(h))
+	return fmt.Sprintf("%dの16進数：%x",int(h), int(h))
 }
 func Kadai_1_4(){
 
@@ -37,7 +37,7 @@ func Kadai_1_4(){
 	stringer = Alphabet{"a","b","c",}
 	TypeCheck(stringer)
 	fmt.Println(stringer)
-	
+
 	stringer = MyHex(100)
 	TypeCheck(stringer)
 	fmt.Println(stringer)
