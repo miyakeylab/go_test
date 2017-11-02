@@ -1,12 +1,14 @@
-package main
-
-import (
-	"io"
-	"bufio"
-	"os"
-	"fmt"
-	"time"
-)
+//package main
+//
+//import (
+//	"io"
+//	"bufio"
+//	"os"
+//	"fmt"
+//	"time"
+//	"net/http"
+//	"strings"
+//)
 
 //import (
 //	"./kadai"
@@ -208,3 +210,55 @@ import (
 //	fmt.Println("                                              ;;;;;;;;                                              ")
 //	fmt.Println("                                                ;;;'                                                ")
 //}
+package main
+
+import (
+"encoding/json"
+"log"
+"net/http"
+"strings"
+	"fmt"
+	"bytes"
+)
+
+func kaibun(s string) bool {
+	if s == "" {
+		return false
+	}
+    var i=0
+	var j=0
+	for /* TODO: 前と後ろから比較していく */ {
+		if s[i] != s[j] {
+			return false
+		}
+	}
+	return true
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+
+	// TODO: リクエストを取得する
+	fmt.Fprintln(w, "hello", r.FormValue("msg"))
+	var q = r.FormValue("msg")
+	ss := strings.Split(q, ",")
+
+	results := make([]bool, len(ss))
+	for i := range ss {
+		results[i] = kaibun(ss[i])
+	}
+
+	// TODO: JSONでレスポンスを返す
+	var buf bytes.Buffer
+	enc := json.NewEncoder(&buf)
+	if err := enc.Encode(ss); err != nil {
+		log.Fatal(err)
+	}
+
+}
+
+func main() {
+	// TODO: ハンドラを登録する
+	http.HandleFunc("/", handler)
+	// TODO: HTTPサーバを8080ポートで起動する
+	http.ListenAndServe(":8080", nil)
+}
